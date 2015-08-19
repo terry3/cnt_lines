@@ -55,3 +55,4 @@ docs/_build/
 
 # PyBuilder
 target/
+/cnt_lines_test.py
