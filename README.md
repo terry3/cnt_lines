@@ -9,8 +9,12 @@ Start with
 
     python cnt_lines.py [some_dir] [wildcard_suffix]
 
-some_dir:directory you want to count lines.
-wildcard_suffix:dot suffix files you want to count lines, e.g. *.c *.h *.cpp.
+* __some\_dir__:directory you want to count lines.
+* __wildcard\_suffix__:dot suffix files you want to count lines.        
+
+Example for c style
+
+    python cnt_lines.py ./ *.c *.h *.cpp
 
 ## Screenshot
    ![](./screenshot/cnt_lines_screenshot_1.png)
