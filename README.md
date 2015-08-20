@@ -14,7 +14,12 @@ Start with
 
 Example for c style
 
-    python cnt_lines.py ./ *.c *.h *.cpp
+    python cnt_lines.py ./ *.c *.h
+
+## Configuration file
+cnt\_lines also could have a configuration file names __cntl\_ign.conf__.It likes the __.gitignore__ int git.
+
+Check the __cntl\_ign.conf__ in repository for details.
 
 ## Screenshot
    ![](./screenshot/cnt_lines_screenshot_1.png)
