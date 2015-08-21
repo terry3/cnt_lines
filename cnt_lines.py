@@ -14,6 +14,7 @@ t_white_toggle = False
 t_config_file_name = "cntl_ign.conf"
 
 def cnt_lines(file_name):
+    "count lines just use open, readline to file end."
     global t_cnt
     t_cnt_curr = 0
     t_file = open(file_name)
@@ -24,13 +25,16 @@ def cnt_lines(file_name):
     t_cnt += t_cnt_curr
 
 def cnt_lines_config_wildcard_add(t_suffix):
+    "wildcard to dot suffix file."
     t_cnt_wldc_l.append(t_suffix);
 
 def cnt_lines_config_add(file_name):
+    "config file setting, ignore some file or directory."
     path = os.path.abspath(file_name).strip()
     t_cnt_file_l.append(path)
 
 def cnt_lines_config_default():
+    "default ignore config, include `cntl_ign.conf` and some wellknown files."
     global t_config_file_name
     cnt_lines_config_add(t_config_file_name)
     cnt_lines_config_add(".svn")
@@ -44,6 +48,7 @@ def cnt_lines_config_default():
     cnt_lines_config_wildcard_add(".out")
 
 def cnt_lines_config():
+    "read config file `cntl_ing.conf`."
     global t_config_file_name
     cnt_lines_config_default()
     try:
@@ -60,6 +65,7 @@ def cnt_lines_config():
         pass
 
 def cnt_lines_traverse(t_dir="./"):
+    "traverse the input directory."
     for lists in os.listdir(t_dir):
         path = os.path.join(t_dir, lists)
         if os.path.isdir(path):
@@ -77,13 +83,13 @@ def cnt_lines_traverse(t_dir="./"):
 
 if __name__ == '__main__':
     t_cnt = 0
-    base_dir = sys.argv[1]
+    base_dir = sys.argv[1]      # first arg is directory to be count lines.
     os.chdir(base_dir)
     cnt_lines_config()
     for var in sys.argv:
-        if var[0] == '*':
+        if var[0] == '*':       # after first arg is the suffix filter.
             t_cnt_wldc_w_l.append(var[1:])
     if len(t_cnt_wldc_w_l):
         t_white_toggle = True
-    cnt_lines_traverse(t_dir=base_dir)
+    cnt_lines_traverse(t_dir=base_dir) # traverse directory.
     print "total:", t_cnt
